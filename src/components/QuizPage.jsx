@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
@@ -32,6 +31,7 @@ function QuizPage() {
           correct: q.correct_answer,
         };
       });
+
       setQuestions(formatted);
     };
 
@@ -46,7 +46,7 @@ function QuizPage() {
       setTimer(prev => {
         if (prev === 1) {
           clearInterval(interval);
-          handleNext(true); // move automatically
+          handleNext(true); // auto move
         }
         return prev - 1;
       });
@@ -85,15 +85,20 @@ function QuizPage() {
   };
 
   const handleFinish = () => {
-    if (selected === questions[current].correct) {
-      setScore(prev => prev + 1);
-    }
+    const finalScore = selected === questions[current].correct ? score + 1 : score;
+
+    const newEntry = {
+      score: finalScore,
+      total: questions.length,
+      timeTaken: questions.length * 15 - timer,
+      date: new Date().toLocaleString()
+    };
+
+    const prev = JSON.parse(localStorage.getItem('quiz-history')) || [];
+    localStorage.setItem('quiz-history', JSON.stringify([newEntry, ...prev]));
+
     navigate('/result', {
-      state: {
-        score,
-        total: questions.length,
-        timeTaken: questions.length * 15 - timer // optional, rough estimate
-      }
+      state: newEntry
     });
   };
 

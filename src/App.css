@@ -1,14 +1,72 @@
-/* index.css — Global styles + beautiful colors */
+/* Global styles - Modern Light Theme */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+}
+
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right top, #1d2b64, #f8cdda);
+  background: linear-gradient(to right top, #e0ecff, #fdfbff);
+  background-image: url('https://st2.depositphotos.com/2824873/11907/v/950/depositphotos_119076898-stock-illustration-school-test-book-03-a.jpg');
+  background-repeat: repeat;
+  background-size: 250px;
+  opacity: 1;
   min-height: 100vh;
   color: #333;
   background-attachment: fixed;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 12px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-left {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333c7d;
+  cursor: pointer;
+}
+
+.navbar-right button {
+  margin-left: 10px;
+  background: transparent;
+  border: 2px solid #b4c5ff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.navbar-right button:hover {
+  background-color: #e9f0ff;
+  border-color: #7aa8ff;
+}
+
+
 
 .container {
   max-width: 650px;
@@ -16,13 +74,13 @@ body {
   padding: 30px;
   background: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.5s ease-in;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in;
 }
 
 h2, h3 {
   text-align: center;
-  color: #3f3f98;
+  color: #333c7d;
   margin-bottom: 20px;
 }
 
@@ -42,18 +100,24 @@ select {
   font-size: 16px;
 }
 
+/* Primary Buttons */
 button {
   padding: 12px 20px;
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background-color: #6a11cb;
-  background-image: linear-gradient(315deg, #6a11cb 0%, #2575fc 74%);
-  color: white;
+  background-color: #c6bfff;
+  background-image: linear-gradient(135deg, #b4c5ff, #d3bfff);
+  color: #333;
   margin: 10px 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-image: linear-gradient(135deg, #aabaff, #e2d7ff);
 }
 
 button:active {
@@ -61,14 +125,10 @@ button:active {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-  transform: translateY(-2px);
-  background-image: linear-gradient(315deg, #5d0cff 0%, #1a73e8 74%);
-}
-
+/* Option Buttons */
 .option-btn {
-  background-color: #eaf0ff;
-  color: #222;      
+  background-color: #f1f4ff;
+  color: #222;
   display: block;
   width: 100%;
   padding: 14px;
@@ -89,30 +149,53 @@ button:hover {
 }
 
 .option-btn:hover {
-  background-color: #d6e2ff;
+  background-color: #dde7ff;
 }
 
 .option-btn.selected {
-  background-color: #2575fc;
-  border-color: #1d2b64;
-  color: #fff;
+  background-color: #bcd5ff;
+  border-color: #7aa8ff;
+  color: #002e60;
   font-weight: 600;
-  box-shadow: 0 0 10px rgba(37, 117, 252, 0.5);
+  box-shadow: 0 0 8px rgba(0, 114, 255, 0.4);
 }
 
+/* Navigation Buttons Container */
 .nav-btns {
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f2f4ff;
+  color: #555;
+  font-size: 14px;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+.footer-links a {
+  color: #3f3f98;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* Result Summary Styling */
 .result-summary {
-  background: #fdfefe;
+  background: #f9fafe;
   border-radius: 10px;
   padding: 25px;
   margin-top: 30px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .result-summary h2 {
@@ -136,15 +219,18 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Mobile Responsive */
 @media screen and (max-width: 600px) {
   .container {
     margin: 20px;
     padding: 20px;
   }
+
   button {
     width: 100%;
     margin-top: 10px;
   }
+
   .nav-btns {
     flex-direction: column;
     gap: 10px;

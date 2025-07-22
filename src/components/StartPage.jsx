@@ -24,6 +24,10 @@ function StartPage() {
         <option value={9}>General Knowledge</option>
         <option value={18}>Computers</option>
         <option value={11}>Film</option>
+        <option value={21}>Sports</option>
+        <option value={27}>Animals</option>
+        <option value={28}>Vehicles</option>
+        <option value={23}>History</option>
       </select>
 
       <label>Difficulty:</label>
